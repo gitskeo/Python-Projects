@@ -7,8 +7,9 @@ pygame.init()
 class draw_information:
     black = 0, 0, 0
     white = 255, 255, 255
-    green = 0, 255, 0
-    red = 255, 0, 0
+    green = 0, 255, 170
+    magenta = 255, 0, 143
+    purple = 139, 0, 143
     background_color = white
 
     gradients = [
@@ -50,12 +51,12 @@ def draw(draw_info, algo_name, ascending):
     draw_info.window.blit(title, (draw_info.width/2 - title.get_width()/2, 5))
 
     controls = draw_info.font.render(
-        "R - Reset | Space - Start Sorting | A - Ascending | D -Desscending", 1, draw_info.black)
+        "R - Reset | Space - Start Sorting | A - Ascending | D -Desscending", 1, draw_info.purple)
     draw_info.window.blit(
         controls, (draw_info.width/2 - controls.get_width()/2, 45))
 
     controls = draw_info.font.render(
-        "I- Insertion Sort | B - Bubble Sort", 1, draw_info.black)
+        "I- Insertion Sort | B - Bubble Sort", 1, draw_info.purple)
     draw_info.window.blit(
         controls, (draw_info.width/2 - controls.get_width()/2, 75))
 
@@ -110,7 +111,7 @@ def bubble_sort(draw_info, ascending=True):
             if (num1 > num2 and ascending) or (num1 < num2 and not ascending):
                 lst[j], lst[j + 1] = lst[j + 1], lst[j]
                 draw_list(draw_info, {j: draw_info.green,
-                          j + 1: draw_info.red}, True)
+                          j + 1: draw_info.magenta}, True)
                 yield True
 
     return lst
@@ -132,7 +133,7 @@ def insertion_sort(draw_info, ascending=True):
             i = i-1
             lst[i] = current
             draw_list(draw_info, {i: draw_info.green,
-                      i - 1: draw_info.red}, True)
+                      i - 1: draw_info.magenta}, True)
             yield True
 
     return lst
