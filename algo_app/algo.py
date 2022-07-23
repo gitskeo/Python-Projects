@@ -46,7 +46,7 @@ def draw(draw_info, algo_name, ascending):
     draw_info.window.fill(draw_info.background_color)
 
     title = draw_info.large_font.render(
-        f"{algo_name} - {'Ascending' if ascending else 'Descending'}", 1, draw_info.Black)
+        f"{algo_name} - {'Ascending' if ascending else 'Descending'}", 1, draw_info.black)
     draw_info.window.blit(title, (draw_info.width/2 - title.get_width()/2, 5))
 
     controls = draw_info.font.render(
@@ -74,7 +74,8 @@ def draw_list(draw_info, color_positions={}, clear_bg=False):
 
     for i, val in enumerate(lst):
         x = draw_info.start_x + i * draw_info.block_width
-        y = draw_info.height - (val - draw_info.min_val) * draw_info.block_height
+        y = draw_info.height - (val - draw_info.min_val) * \
+            draw_info.block_height
 
         color = draw_info.gradients[i % 3]
 
@@ -114,7 +115,8 @@ def bubble_sort(draw_info, ascending=True):
 
     return lst
 
-def insertion_sort(draw_info, ascending = True):
+
+def insertion_sort(draw_info, ascending=True):
     lst = draw_info.lst
 
     for i in range(1, len(lst)):
@@ -128,9 +130,9 @@ def insertion_sort(draw_info, ascending = True):
                 break
             lst[i] = lst[i-1]
             i = i-1
-            lst[i] = current 
+            lst[i] = current
             draw_list(draw_info, {i: draw_info.green,
-                      i - 1: draw_info.red},True)
+                      i - 1: draw_info.red}, True)
             yield True
 
     return lst
@@ -162,7 +164,7 @@ def main():
             except StopIteration:
                 sorting = False
         else:
-            draw(draw_info,sorting_algo_name, ascending)
+            draw(draw_info, sorting_algo_name, ascending)
 
         pygame.display.update()
 
