@@ -10,6 +10,7 @@ class draw_information:
     green = 0, 255, 170
     magenta = 255, 0, 143
     purple = 139, 0, 143
+    lime_green = 100, 255, 100
     background_color = white
 
     gradients = [
